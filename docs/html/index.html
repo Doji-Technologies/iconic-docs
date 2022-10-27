@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta content="A Cross-platform Unity utility for reading and writing .ico files." lang="en" name="description" xml:lang="en" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iconic (.ico Utilities) &mdash; Iconic (.ico Utilities) 2022 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Iconic (.ico Utilities) &mdash; Iconic (.ico Utilities) 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -16,7 +16,8 @@
         <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Loading .ico files" href="reading.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,9 +35,18 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Overview:</span></p>
+              <p class="caption"><span class="caption-text">Overview</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reading.html">Loading .ico files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="writing.html">Encoding .ico files</a></li>
+</ul>
+<p class="caption"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 </ul>
 
         </div>
@@ -55,7 +65,6 @@
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
       <li>Iconic (.ico Utilities)</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -65,32 +74,30 @@
              
   <div class="section" id="iconic-ico-utilities">
 <h1>Iconic (.ico Utilities)<a class="headerlink" href="#iconic-ico-utilities" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://assetstore.unity.com/packages/slug/215960">Iconic</a> is a cross-platform utility for reading and writing .ico files. It doesn’t rely on System.Drawing.dll and is suited to be used on all platforms that Unity supports.</p>
+<p>Feel free to check out <a class="reference external" href="https://www.doji-tech.com/iconic-demo/">this WebGL Demo</a>, showcasing what can be achieved with this asset.</p>
+<dl class="simple">
+<dt>Load .ico files at runtime</dt><dd><p>Extract all resolutions contained in a single .ico file into Texture2D objects
+Supports transparency</p>
+</dd>
+<dt>Write .ico files at runtime</dt><dd><p>Convert Texture2D objects to .ico file
+automatically create multi-resolution icons</p>
+</dd>
+</dl>
 <div class="toctree-wrapper compound">
 </div>
-<p>This documentation is currently in progress and will evolve as times goes on…</p>
+<div class="toctree-wrapper compound">
 </div>
-<div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
-<p>Usage of the utility is pretty simple. There is a static class called ‘IconConversion’ that you can use to access various methods.</p>
-<div class="section" id="loading-ico-files">
-<h2>Loading .ico files<a class="headerlink" href="#loading-ico-files" title="Permalink to this headline"></a></h2>
-<p>You can load an icon from various sources.</p>
-<p>E.g. you can use
-IconConversion.LoadIcon(string fileName)
-IconConversion.LoadIcon(Stream stream)
-IconConversion.LoadIcon(byte[] array)</p>
-<p>Assuming we load an icon from a byte array ‘myIconData’, we’ll use:
-Icon icon = IconConversion.LoadIcon(myIconData);</p>
-<p>Then we can use an extension method to turn the icon into a Texture2D like so
-Texture2D myTexture = icon.ExtractTexture2D(imageIndex: 0);</p>
-<p>As you’ll see, you need to pass the index of the image to this method. An .ico file can contain multiple images, usually each with a different resolution. You can check Icon.NumImages for the total number of images that an icon contains.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reading.html" class="btn btn-neutral float-right" title="Loading .ico files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

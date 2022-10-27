@@ -4,34 +4,39 @@ Iconic (.ico Utilities)
 .. meta::
    :description lang=en: A Cross-platform Unity utility for reading and writing .ico files.
 
+`Iconic`_ is a cross-platform utility for reading and writing .ico files. It doesn't rely on System.Drawing.dll and is suited to be used on all platforms that Unity supports.
+
+Feel free to check out `this WebGL Demo`_, showcasing what can be achieved with this asset.
+
+Load .ico files at runtime
+   Extract all resolutions contained in a single .ico file into Texture2D objects
+   Supports transparency
+Write .ico files at runtime
+   Convert Texture2D objects to .ico file
+   automatically create multi-resolution icons
+
+
+.. _Iconic: https://assetstore.unity.com/packages/slug/215960
+.. _this WebGL Demo: https://www.doji-tech.com/iconic-demo/
+
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Overview:
+   :caption: Overview
 
    Introduction <self>
-   
-This documentation is currently in progress and will evolve as times goes on...
 
-Usage
-=====
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Usage
 
-Usage of the utility is pretty simple. There is a static class called 'IconConversion' that you can use to access various methods.
+   /reading
+   /writing
 
-Loading .ico files
-------------------
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: FAQ
 
-You can load an icon from various sources.
-
-E.g. you can use
-IconConversion.LoadIcon(string fileName)
-IconConversion.LoadIcon(Stream stream)
-IconConversion.LoadIcon(byte[] array)
-
-Assuming we load an icon from a byte array 'myIconData', we'll use:
-Icon icon = IconConversion.LoadIcon(myIconData);
-
-Then we can use an extension method to turn the icon into a Texture2D like so
-Texture2D myTexture = icon.ExtractTexture2D(imageIndex: 0);
-
-As you'll see, you need to pass the index of the image to this method. An .ico file can contain multiple images, usually each with a different resolution. You can check Icon.NumImages for the total number of images that an icon contains.
+   /faq

@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Search &mdash; Iconic (.ico Utilities) 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Loading .ico files &mdash; Iconic (.ico Utilities) 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,10 +14,10 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
-    <script src="_static/searchtools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Encoding .ico files" href="writing.html" />
+    <link rel="prev" title="Iconic (.ico Utilities)" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,7 +28,7 @@
             <a href="index.html" class="icon icon-home"> Iconic (.ico Utilities)
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -41,8 +40,8 @@
 <li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reading.html">Loading .ico files</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Loading .ico files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="writing.html">Encoding .ico files</a></li>
 </ul>
 <p class="caption"><span class="caption-text">FAQ</span></p>
@@ -64,7 +63,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Search</li>
+      <li>Loading .ico files</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -73,22 +72,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="loading-ico-files">
+<h1>Loading .ico files<a class="headerlink" href="#loading-ico-files" title="Permalink to this headline"></a></h1>
+<p>Usage of the utility is pretty simple. There is a static class called ‘IconConversion’ that you can use to access various methods.
+You can load an icon from various sources.</p>
+<div class="line-block">
+<div class="line">E.g. you can use one of the following methods</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">IconConversion.LoadIcon(string</span> <span class="pre">fileName)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">IconConversion.LoadIcon(Stream</span> <span class="pre">stream)</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">IconConversion.LoadIcon(byte[]</span> <span class="pre">array)</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Assuming we load an icon from a byte array ‘myIconData’, we’ll use:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Icon</span> <span class="pre">icon</span> <span class="pre">=</span> <span class="pre">IconConversion.LoadIcon(myIconData);</span></code></div>
+</div>
+<div class="line-block">
+<div class="line">Then we can use an extension method to turn the icon into a Texture2D like so</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Texture2D</span> <span class="pre">myTexture</span> <span class="pre">=</span> <span class="pre">icon.ExtractTexture2D(imageIndex:</span> <span class="pre">0);</span></code></div>
+</div>
+<p>As you see, you need to pass the index of the image to this method. An .ico file can contain multiple images, usually each with a different resolution. You can check Icon.NumImages for the total number of images that an icon contains.</p>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Iconic (.ico Utilities)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="writing.html" class="btn btn-neutral float-right" title="Encoding .ico files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
@@ -110,14 +121,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>

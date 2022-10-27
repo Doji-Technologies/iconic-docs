@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encoding .ico files &mdash; Iconic (.ico Utilities) 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FAQ" href="faq.html" />
+    <link rel="prev" title="Loading .ico files" href="reading.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Iconic (.ico Utilities)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="reading.html">Loading .ico files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Encoding .ico files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fire-forget">Fire &amp; Forget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-multi-resolution-behaviour">Customizing Multi-Resolution Behaviour</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-default-values">Example 1: Default Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-one-single-resolution">Example 2: One Single Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-different-scaling-modes">Example 3: Different Scaling Modes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Iconic (.ico Utilities)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Encoding .ico files</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="encoding-ico-files">
+<h1>Encoding .ico files<a class="headerlink" href="#encoding-ico-files" title="Permalink to this headline"></a></h1>
+<div class="section" id="fire-forget">
+<h2>Fire &amp; Forget<a class="headerlink" href="#fire-forget" title="Permalink to this headline"></a></h2>
+<div class="line-block">
+<div class="line">It only takes one simple method call to generate an .ico file from a Texture2D:</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">IcoConversion.EncodeToICO(myTexture);</span></code></div>
+</div>
+<p>Some prerequisites for the textures:</p>
+<ul class="simple">
+<li><p>must be in a non-compressed format (RGBA32, ARGB32, RGB24)</p></li>
+<li><p>.ico only supports resolutions up to 256x256</p></li>
+</ul>
+</div>
+<div class="section" id="customizing-multi-resolution-behaviour">
+<h2>Customizing Multi-Resolution Behaviour<a class="headerlink" href="#customizing-multi-resolution-behaviour" title="Permalink to this headline"></a></h2>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">EncodeToICO()</span></code> methods automatically create a multi-resolution .ico file. (Visual Studio is a decent tool to inspect .ico files by the way. If you want to know which images are embedded in an .ico file just drag and drop it into an open instance of VS.)</p>
+<p>Configuring this behaviour can be achieved by passing an IcoRescaleSettings object.
+This is best explained with a few examples. Imagine we have the following image with a resolution of 200x200 as an uncompressed Texture2D object in Unity:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/baboon.jpg"><img alt="_images/baboon.jpg" src="_images/baboon.jpg" style="width: 40%;" /></a>
+</div>
+<div class="section" id="example-1-default-values">
+<h3>Example 1: Default Values<a class="headerlink" href="#example-1-default-values" title="Permalink to this headline"></a></h3>
+<p>If you just call <code class="docutils literal notranslate"><span class="pre">IcoConversion.EncodeToICO(myTexture);</span></code> without specifying any settings, the resulting .ico file will contain the following 5 images with the resolutions 256x256, 128x128, 64x64, 32x32 and 16x16:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/baboon_ico.jpg"><img alt="_images/baboon_ico.jpg" src="_images/baboon_ico.jpg" style="width: 60%;" /></a>
+</div>
+</div>
+<div class="section" id="example-2-one-single-resolution">
+<h3>Example 2: One Single Resolution<a class="headerlink" href="#example-2-one-single-resolution" title="Permalink to this headline"></a></h3>
+<p>If you do not wish to create a multi-resolution icon you can simply set MultiResolutionIcon to false:</p>
+<blockquote>
+<div><div class="highlight-C# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">settings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IcoRescaleSettings</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">MultiResolutionIcon</span> <span class="p">=</span> <span class="k">false</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>This will result in an .ico file that contains one single 200x200 image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When MultiResolution is set to false, the asset will attempt to turn your texture into an .ico file without modifications. This means, you have to ensure yourself, that your texture is within the maximum resolution supported by .ico files (256x256). Otherwise you will encounter a runtime exception like: “Invalid texture resolution. ICO files support a maximum resolution of 256x256.”</p>
+</div>
+</div>
+<div class="section" id="example-3-different-scaling-modes">
+<h3>Example 3: Different Scaling Modes<a class="headerlink" href="#example-3-different-scaling-modes" title="Permalink to this headline"></a></h3>
+<p>In example 1 you might have noticed, that the largest image used a resolution of 256x256 even though the initial texture has a resolution of 200x200. The reason is, that IcoRescaleSettings.DownscaleMode is set to ‘DownscaleMode.ToNearest’ by default. Thus the texture will be rescaled to the nearest power-of-two. If you wish to change this behaviour, you can specify a different mode like so:</p>
+<blockquote>
+<div><div class="highlight-C# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">settings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IcoRescaleSettings</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">MultiResolutionIcon</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+   <span class="n">DownscaleMode</span> <span class="p">=</span> <span class="n">DownscaleMode</span><span class="p">.</span><span class="n">None</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>When specifying ‘DownscaleMode.None’, the resulting .ico file will contain the following 4 images with the resolutions 200x200, 100x100, 50x50, 25x25:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/baboon_ico_200.jpg"><img alt="_images/baboon_ico_200.jpg" src="_images/baboon_ico_200.jpg" style="width: 60%;" /></a>
+</div>
+<p>The other modes ‘DownscaleMode.ToLarger’ and ‘DownscaleMode.ToSmaller’ work similar to the default ‘DownscaleMode.ToNearest’, but you can choose to always scale up or down to the next power-of-two respectively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">IcoRescaleSettings.DownscaleMode only has an effect if IcoRescaleSettings.MultiResolutionIcon is set to true.</div>
+<div class="line">Irrespective of which downscale mode is used, the largest image will always be clamped to the maximum supported resolution of 256x256 pixels.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reading.html" class="btn btn-neutral float-left" title="Loading .ico files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Doji Technologies.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
